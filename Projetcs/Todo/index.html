@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+          <h1>ToDo</h1>
+      </div>
+      <div class="main">
+        <div class="group">
+          <input type="text" name="note" id="note" />
+          <button id="btn">Add</button>
+        </div>
+        <div class="note-data">
+          <ul id="list"></ul>
+        </div>
+      </div>
+    </div>
+    <script>
+
+           
+           let addBtn= document.getElementById("btn");
+
+                addBtn.addEventListener('click',()=>{
+                
+                let noteData = document.getElementById("note").value;
+                let list=document.getElementById("list");
+                let li= document.createElement("li");
+                if(noteData!=""){
+                   li.innerText=noteData;
+                   list.appendChild(li);
+                   noteData.value="";
+               }
+
+           });
+    
+    </script>
+  </body>
+</html>

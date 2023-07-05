@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .container {
+      margin: 0px;
+      padding: 10px;
+      background-color: black;
+      color: white;
+      text-align: center;
+    }
+    body {
+      margin: 0px;
+      padding: 0px;
+      height: 90vh;
+      width: 100%;
+
+      color: white;
+
+      background: linear-gradient(
+          to right,
+          rgb(75, 43, 255),
+          rgba(255, 64, 64, 0.3)
+        ),
+        url(img/notebook.jpg);
+      background-size: cover;
+    }
+    #brand {
+      border-left: tomato solid 2px;
+      border-left-width: 0.7vh;
+      display: inline-block;
+      padding: 5px;
+      line-height: 6px;
+    }
+    #id {
+      background-image: url();
+    }
+    .form-container {
+        margin:auto;
+      border-radius: 1px;
+      box-shadow: 4px 4px 15px rgb(181, 21, 230);
+      border: 3px ridge rgb(22, 92, 221);
+      background-image: linear-gradient(
+        to bottom right,
+        rgb(213, 210, 250),
+        rgb(67, 58, 199)
+      );
+      width: 370px;
+      height: 250px;
+      padding: 15px;
+      align-items: center;
+      font-size: 30px;
+    }
+    input[type="text"],
+    input[type="password"] {
+      background-color: ghostwhite;
+      width: 95%;
+      line-height: 35px;
+      margin-top: 10px;
+      border: none;
+      font-size: 20px;
+      padding: 5px 10px;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      background-color: black;
+      color: white;
+    }
+    button:hover{
+      background-color: rgb(209, 123, 10);
+    }
+    button {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: rgb(224, 147, 24);
+      color: white;
+      border-style: none;
+      font-size: 20px;
+    }
+    .form-controle {
+      margin-top: 0px;
+    }
+    .login-header {
+      font-size: 35px;
+      font-weight: bold;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: black;
+      text-align: center;
+    }
+    .main-container {
+      margin-top: 8%;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2 id="brand">NoteTaker</h2>
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="form-container">
+        <div class="login-header">LOGIN</div>
+        <form id="loginForm" action="">
+          <div class="form-controle">
+            <input id="username" type="text" name="unm" placeholder="username" />
+          </div>
+
+          <div class="form-controle">
+            <input id="password" type="password" name="pwd" placeholder="password" />
+          </div>
+          <button id="login-btn" type="button" value="Login">Login</button>
+          <a href="#">forgot pasword</a>
+          <a href="#">signup</a>
+        </form>
+      </div>
+    </div>
+    <script>
+
+        let username;
+        let password;
+
+      let loginButton=document.getElementById("login-btn");
+      loginButton.addEventListener("click",()=>{
+        
+         username = document.getElementById("username").value;
+         password = document.getElementById("password").value;
+        
+        let res= loginValidation();
+        let isvalidUser=false;
+      });
+
+      function loginValidation(){
+        let userStringArray = localStorage.getItem("users");
+        let userJsonArray = JSON.parse(userStringArray);
+
+       userJsonArray.forEach(validateUser);
+          if(isvalidUser){
+            alert("login success");
+            sessionStorage.setItem("activeUser",username);
+            alert(sessionStorage.getItem("activeUser"));
+            window.location.assign("http://127.0.0.1:5501/dashboard.html")
+          }else{
+            alert("invalid login");
+          }
+       }
+
+       function validateUser(ar = []) {
+          console.log("unm: "+ar[0]);
+          console.log("pwd: "+ar[1]);
+          
+          if (ar[0] == username && ar[1] == password) {
+            isvalidUser = true;
+          } else {
+            isvalidUser = false;
+          }
+        }
+     
+    </script>
+  </body>
+</html>

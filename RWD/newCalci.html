@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: black;
+      }
+      .container {
+        width: 350px;
+        padding: 10px;
+        box-shadow: 1px 5px 8px 5px rgba(255, 136, 0, 0.801);
+        background-color: rgb(245, 211, 179);
+      }
+      .display {
+        background-color: white;
+        height: 100px;
+      }
+      .result {
+        background-color: rgb(247, 205, 69);
+        height: 100px;
+      }
+
+      .number , .operator {
+        float: left;
+        margin: 10px;
+        width: 50px;
+        font-size: 25px;
+        padding: 5px;
+        background-color: thistle;
+        color: black;
+        border-radius: 5px;
+      }
+      .eq {
+        background-color: rgb(136, 209, 27);
+        color: white;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+        <div class="result" id="result"></div>
+      <div class="display" id="display"></div>
+      <div class="btn-cotainer">
+    
+
+          <button class="number" type="button" id="7">7</button>
+          <button class="number" type="button" id="8">8</button>
+          <button class="number" type="button" id="9">9</button>
+          <button class="operator" type="button" id="x">x</button>
+        
+
+       
+          <button class="number" type="button" id="4">4</button>
+          <button class="number" type="button" id="5">5</button>
+          <button class="number" type="button" id="6">6</button>
+          <button class="operator" type="button" id="/">/</button>
+       
+
+   
+          <button class="number" type="button" id="1">1</button>
+          <button class="number" type="button" id="2">2</button>
+          <button class="number" type="button" id="3">3</button>
+          <button class="operator" type="button" id="+">+</button>
+   
+
+        
+          <button class="operator" type="button" id=".">.</button>
+          <button class="number" type="button" id="0">0</button>
+          <button class="operator" type="button" id="-">-</button>
+          <button class="operator eq" type="button" id="=">=</button>
+      
+          <button class="operator" type="button" id="clear">C</button>
+        
+      </div>
+    </div>
+    <script>
+      
+      
+      function printOutput(num){
+          if(num==""){
+            document.getElementById("result").innerText="";
+          }
+          document.getElementById("result").innerText=num;
+      }
+
+      let currentDisplay = document.getElementById("display").innerText;
+      let resultDisplayed=false;
+      function printHistory(n){
+        
+        if(resultDisplayed==false){
+            
+            currentDisplay.innerText = n;
+            alert(currentDisplay.innerText);
+            resultDisplayed=true;
+        }else{
+            currentDisplay.innerText = currentDisplay.innerText+ n;
+            alert(currentDisplay);
+        }
+      
+        //alert(display);
+        //alert(n);
+
+      }
+
+      printOutput("45454");
+      var operator= document.getElementsByClassName("operator");
+      for(let i=0;i<operator.length;i++){
+          operator[i].addEventListener("click",function(){
+              //alert("operator click: "+this.id);
+              if(this.id=="clear"){
+                printOutput("");
+              }
+          })
+      }
+
+      var number= document.getElementsByClassName("number");
+      for(let i=0;i<number.length;i++){
+        number[i].addEventListener("click",function(){
+              //alert("number click: "+this.id);
+              printHistory(this.id);
+          })
+      }
+    </script>
+  </body>
+</html>

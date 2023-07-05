@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration form</title>
+    <style>
+      body {
+        background-image: url(/img/dfa037a53e121ecc9e0926800c3e814e.jpg);
+      }
+      #frm {
+        margin: auto;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 15px;
+        border-radius: 15px;
+        width: 50%;
+        border: 3px solid teal;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.87);
+        
+      }
+      h1 {
+        color: tomato;
+        
+      }
+      input[type="button"] {
+        color: white;
+        background-color: teal;
+        padding: 10px;
+        font-size: 20px;
+        border: none;
+        border-radius: 10px;
+        margin: 10px;
+      }
+      input[type="button"]:hover {
+        background-color: rgb(19, 170, 170);
+      }
+      input[type="reset"]:hover {
+        background-color: rgb(230, 27, 54);
+      }
+      input[type="reset"] {
+        color: white;
+        margin: 10px;
+        background-color: rgb(195, 10, 35);
+        font-size: 20px;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="frm">
+      <h1 style="text-align: center">Create New Account</h1>
+      <form action="#">
+        <label for="fname">First Name</label>
+        <input type="text" name="name" required />
+        <br /><br />
+        <label for="lname">Last Name</label>
+        <input type="text" name="lname" required />
+        <br /><br />
+        <label for="password">Enter Passsword</label>
+        <input type="password" name="password" id="" />
+        <br /><br />
+        <label for="repassword">Retype Passsword</label>
+        <input type="password" name="repassword" id="" />
+        <br /><br />
+        <label for="dob">DOB</label>
+        <input type="date" name="dob" required />
+        <br /><br />
+        <label for="mob">Mobile No.</label>
+        <input type="number" name="mob" size="10" required />
+        <br /><br />
+        <label for="country">Select Country</label>
+        <select name="country" id="">
+          <option value="Afganistan">Afganistan</option>
+          <option value="Algeria">Algeria</option>
+          <option value="Itly">Itly</option>
+          <option value="Shrilanka">Shrilanka</option>
+          <option value="Japan">Japan</option>
+          <option value="India">India</option>
+          <option value="Indonecia">Indonecia</option>
+          <option value="Thailand">Thailand</option>
+        </select>
+        <br /><br />
+        <label for="prolang">Programming Language</label><br />
+        <input type="radio" name="prolang" value="C#" id="" />C# <br />
+        <input type="radio" name="prolang" value="Java" id="" /> Java<br />
+        <input type="radio" name="prolang" value="Python" id="" /> Python<br />
+        <input type="radio" name="prolang" value="PHP" id="" /> PHP<br />
+        <br />
+        <label for="lang">Language</label><br />
+        <input type="checkbox" name="lang" value="English" id="" />English
+        <br />
+        <input type="checkbox" name="lang" value="Hindi" id="" /> Hindi<br />
+        <input type="checkbox" name="lang" value="Marathi" id="" />
+        Marathi<br />
+        <br />
+        <div class="btns" style="text-align: center">
+          <input type="button" value="SignUp" />
+          <input type="reset" value="Reset" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

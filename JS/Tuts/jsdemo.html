@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>JS RegEx Demo</h1>
+    <h2>Modifiers</h2>
+    <button onclick="regexdemo1()">GET</button>
+    <h3 id="demo1"></h3>
+
+    <h2>Metacharacters</h2>
+    <button onclick="regexdemo2()">GET</button>
+    <h3 id="demo2"></h3>
+
+    <script>
+      function regexdemo1() {
+        let str = "hi 102 hello how are23 u";
+        let patt = /hi/g;
+        let result=str.match(patt);
+        document.getElementById("demo1").innerHTML = result;
+      }
+      function regexdemo2() {
+        let str = "hi 102 hello how are23 u 100% ";
+        let patt = new RegExp("e");
+        let result = patt.compile(str);
+        document.getElementById("demo2").innerHTML = result;
+      }
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" name="unm" id="unm">
+    <br> <button id="sbtn" type="button" value="submit">Signup</button>
+    <script>
+
+        let btn= document.getElementById("sbtn");
+        btn.addEventListener("click",function(){
+            let name= document.getElementById("unm").value;
+            console.log(name);
+        });
+
+        let userStringArray = localStorage.getItem("users");
+        console.log("user String array: " + userStringArray);
+        let userJsonArray = null;
+        userJsonArray = JSON.parse(userStringArray);
+        console.log("user json array: " + userJsonArray);
+        console.log("user json is null: " + userJsonArray != null);
+
+        let userFound = false;
+        if (userJsonArray != null) {
+          userJsonArray.forEach(checkUsername);
+          return userFound;
+          // userJsonArray.forEach(e => {
+          //     console.log(e[0]);
+          //     if(e[0].username == username){
+          //         alert("username exist");
+          //         return false;
+          //     }else{
+          //         return true;
+          //     }
+          // });
+          
+        } else {
+          alert("no users");
+          return false;
+        }
+
+        function checkUsername(ar = []) {
+          if (ar[0] == username) {
+            userFound = true;
+          } else {
+            userFound = false;
+          }
+        }
+      }
+    </script>
+</body>
+</html>

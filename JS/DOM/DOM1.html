@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Working with DOM</h1>
+    <a>Empty Link</a>
+    <p id="para1">DOM is a Document Object Model</p>
+    <ul class="mylist">
+        <li>Arijit sing</li>
+        <li>Jubin Nautiyal</li>
+        <li>javed ali</li>
+        <li>Rahat fateh ali khan</li>
+        <li>atif aslam</li>
+    </ul>
+    <script>
+        
+        let content=document.getElementById("para1").textContent;
+        console.log(content);
+        let hed1=document.querySelector("h1");
+        console.log(hed1);
+
+        let list=document.querySelector(".mylist");
+        console.log(list);
+
+        let items=document.querySelectorAll("ul > li");
+        items.forEach(i=>{
+            console.log(i);
+        })
+       
+        //creating unordered list
+        let uol=document.createElement("ul");
+        document.body.appendChild(uol);
+
+        //creating list values
+        let l1=document.createElement("li");
+        l1.textContent="sunny";
+        //inserting list in ul tag
+        uol.appendChild(l1);
+        let l2=document.createElement("li");
+        l2.textContent="abhi";
+        uol.appendChild(l2);
+
+        //changing the text color of h1
+        let headline =document.querySelector("h1");
+        headline.style.color= "red";
+        headline.style.border= "2px solid green";
+        headline.style.padding="10px";
+        headline.style.backgroundColor="yellow";
+
+        //adding attribute to elements
+        let a=document.querySelector("a");
+        a.setAttribute("href","https://www.google.com");    
+    </script>
+</body>
+</html>

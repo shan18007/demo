@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+        let car={
+            brand :"BMW",
+            color: "White",
+            capacity:4,
+            price:984393,
+            phone:[{home:787874},{land:878787}]
+        }
+
+        let strOb = JSON.stringify(car);
+        localStorage.setItem("cars",strOb);
+        console.log(strOb);
+        document.write(strOb);
+        strOb=strOb.replace("BMW","AUDI");
+        //document.write(strOb);
+        console.log(strOb);
+        let newJsonOb= JSON.parse(strOb);
+        console.log(newJsonOb); 
+        console.log(typeof(newJsonOb));
+        document.write(strOb);
+        document.write(typeof(newJsonOb));
+        console.log(document.cookie);
+    </script>
+</body>
+</html>

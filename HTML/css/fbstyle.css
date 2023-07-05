@@ -1,0 +1,43 @@
+.container{
+    align-items: center;
+    text-align: center;
+}
+
+.form-lgn{
+    line-height: 1.6;
+    margin-top: 150px;
+    text-align: center;
+    opacity: 0.8;
+    background-color: rgba(rgb(248, 247, 247), rgb(247, 240, 240), rgb(248, 242, 242), 0.7);
+    display:-webkit-inline-box;
+    padding: 10px;
+}
+
+input{
+    font-size: 20px;
+}
+input:focus{
+    border: solid 1px rgba(32, 132, 226, 0.883);
+}
+.lgn-btn{
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+    width:100%;
+}
+.cna{
+    
+    color: white;
+    border-radius: 5px;
+}
+body{
+    background-image: url(/img/notebook.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h2{
+    color: rgb(24, 126, 6);
+    text-decoration-style:dashed;
+}
+

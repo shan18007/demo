@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .container {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="reg-form">
+        <form action="" method="get" id="regForm">
+          <input type="text" name="name" id="name" placeholder="Name" />
+          <br /><input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Email"
+          />
+          <br />
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="username"
+          />
+          <br />
+          <input type="text" name="phone" id="phone" placeholder="Phone" />
+          <br />
+          <input type="text" name="pass" id="pass" placeholder="Password" />
+          <br />
+          <input
+            type="text"
+            name="r_pass"
+            id="r_pass"
+            placeholder="Retype Password"
+          />
+          <br />
+          <button id="signup-btn" type="button" value="submit">Signup</button>
+        </form>
+      </div>
+    </div>
+    <script>
+    
+
+      let name = null;
+      let email = null;
+      let username = null;
+      let phone = null;
+      let pass = null;
+      let r_pass = null;
+
+      //click event on signup button
+      let btn = document.getElementById("signup-btn");
+      btn.addEventListener("click", function () {
+        
+        //fetching values from fields
+         name = document.getElementById("name").value;
+        //console.log(name);
+         email = document.getElementById("email").value;
+         username = document.getElementById("username").value;
+         phone = document.getElementById("phone").value;
+         pass = document.getElementById("pass").value;
+         r_pass = document.getElementById("r_pass").value;
+
+        //validating all fields are not empty
+        if (
+          name == "" ||
+          email == "" ||
+          username == "" ||
+          phone == "" ||
+          pass == "" ||
+          r_pass == ""
+        ) {
+          alert("all fields are mandatory..!");
+        } else {
+            //matching password and confirm password
+          if (pass == r_pass) {
+            //registering the user
+            registerUser();
+          } else {
+            alert("Password not  match..!");
+          }
+        }
+      });
+
+      function registerUser() {
+        //checking user already exist or not
+        let userExist = checkUserExist();
+        console.log("user exist: " + userExist);
+        //if username not exist
+        if (!userExist) {
+          //creating Json Array  
+          let userJson = [];
+          let userArray = [];
+          
+          
+          //store unm pwd
+          userArray.push(username);
+          userArray.push(pass);
+          //store contact info
+
+          //adding to json ob
+          userJson.push(userArray);
+          console.log(username);
+          console.log(pass);
+          console.log("user array: " + userArray);
+          console.log("user json while register: " + userJson);
+
+          //fetching Json object from LocalStorage
+          let oldUserStringObject = localStorage.getItem("users");
+          
+          //if LS is not null 
+          if (oldUserStringObject != null) {
+            //fetching old Json object
+            let oldUserJsonObject = JSON.parse(oldUserStringObject);
+            //adding new Json Ob to Old
+            oldUserJsonObject.push(userArray);
+            
+            let userStringObject = JSON.stringify(oldUserJsonObject);
+            localStorage.setItem("users", userStringObject);
+            alert("Registration Succesfull old...!");
+          } else {
+            
+            let userStringObject = JSON.stringify(userJson);
+            localStorage.setItem("users", userStringObject);
+            alert("Registration Succesfull new...!");
+          }
+        } else {
+          alert("username already used..!");
+        }
+      }
+      function checkUserExist() {
+        let userStringArray = localStorage.getItem("users");
+        console.log("user String array: " + userStringArray);
+        let userJsonArray = null;
+        userJsonArray = JSON.parse(userStringArray);
+        console.log("user json array: " + userJsonArray);
+        console.log("user json is null: " + userJsonArray != null);
+
+        let userFound = false;
+        if (userJsonArray != null) {
+          userJsonArray.forEach(checkUsername);
+          return userFound;
+        } else {
+          alert("no users");
+          return false;
+        }
+
+        function checkUsername(ar = []) {
+          if (ar[0] == username) {
+            userFound = true;
+          } else {
+            userFound = false;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

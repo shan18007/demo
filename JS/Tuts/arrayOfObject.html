@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let cars = [
+            {
+                color: "red",
+                type: "mini",
+                capacity: 4,
+                brand: "BMW"
+            },
+            {
+                color: "Gray",
+                type: "SUV",
+                capacity: 6 ,
+                brand: "AUDI" 
+            },
+            {
+                color: "black",
+                type: "VAN",
+                capacity: 6,
+                brand: "Honda"
+            },
+            {
+                color: "red" ,
+                type: "sport",
+                capacity: 1 ,
+                brand: "chevrolet"
+            }
+        ]
+        let redcars= cars.filter(c=>c.color == "red")
+        console.log(redcars)
+        
+        // let sizes = cars.map(c=>{
+        //     if(c.capacity <= 2) {
+        //         return "small";
+        //     }
+        //     if(c.capacity<=5) {
+        //         return "medium";
+        //     }
+        //     return "large";
+        // })
+        // console.log(sizes)
+
+        
+    </script>
+</body>
+</html>

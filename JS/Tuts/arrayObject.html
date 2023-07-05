@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Array Object</h1>
+    <script>
+        const person=[
+        {name: 'abhi', age: 23},
+        {name: 'rushi', age: 22},
+        {name: 'monalisa',age: 77},
+        {name: 'monkey',age: 34},
+        {name: 'apsara',age: 21}
+        ]
+        person.forEach(p=>{
+            console.log(p);
+        });
+
+       let olderAges= person.filter((p)=>{
+            return p.age>50;
+        });
+        olderAges.forEach(p=>{
+            console.log(p.name);
+        });
+
+       let n= person.find(p=>{
+            return p.name == "monalisa";
+        })
+        console.log(n);
+        let bl=person.some(p=>{
+            return p.age>50;
+        })
+        console.log(bl);
+        console.log(person[0]);
+
+        //addition of sum of ages
+       let sumAges = person.reduce((csum,p)=>{
+        return csum+p.age;
+       },0)
+       console.log(sumAges);
+    </script>
+</body>
+</html>

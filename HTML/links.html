@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>link demo</title>
+    <style>
+        a:link{
+            color: maroon;
+            background-color: mediumaquamarine;
+            text-decoration: none;
+        }
+        a:hover{
+            color:white;
+            background-color: rgb(211, 101, 27);
+            font-size: 20px;
+            padding: 3px;
+            border-radius: 5px;
+        }
+        a:active{
+            color: rgb(195, 0, 255);
+        }
+    </style>
+</head>
+<body>
+    <h3>Move cursor on link to  get information about link</h3>
+    <ul>
+        <li> <a title="goto facebook login" href="https://www.facebook.com" target="_blank">Facebook</a> </li>
+        <li> <a title="Google search engine" href="https://www.google.com" target="_self">Google</a></li>
+        <li><a title="Youtube Videos" href="https://www.youtube.com" target="_top">Youtube</a></li>
+        <button onclick="document.location='basic.html'">basic page</button>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Array Manipulation</h3>
+    
+    <button onclick="ardemo()">get result</button>
+    <h3>before</h3>
+    <p id="before"></p>
+    <h3>after pop</h3>
+    <p id="op"></p>
+    <script>
+        function ardemo(){
+        let arr=["apple","bannana","peanut","cashews","beans"];
+        document.getElementById("before").innerHTML=arr;
+        arr.splice(2,"kiwi","mango");
+        document.getElementById("op").innerHTML=arr.valueOf();
+        }
+    </script>
+</body>
+</html>

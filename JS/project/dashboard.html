@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2 id="user"></h2>
+      <input type="text" name="title" id="noteTitle" placeholder="title" />
+      <textarea
+        name="content"
+        id="noteContent"
+        cols="30"
+        rows="10"
+        placeholder="content"
+      >
+      </textarea>
+      <input type="submit" value="Add Note" id="addNote" />
+
+      <div id="demo">
+
+
+      </div>
+      <button onclick="fetch()">Fetch NOtes</button>
+    </div>
+
+    <script>
+
+      document.getElementById("user").innerHTML=sessionStorage.getItem("activeUser");
+
+      let title = null;
+      let content=null;
+      let unm=null;
+
+      unm=sessionStorage.getItem("activeUser");
+               window.onload =function fetch(){
+                 let array = localStorage.getItem("notes");
+                 let  strArr= JSON.parse(array);
+                 let demo = document.getElementById("demo");
+                 
+                  for(let i=0;i<strArr.length;i++){
+                      
+                            if(strArr[i][0]==unm){
+                                console.log("before splice: "+strArr);
+                                console.log("splicing: "+strArr.splice(1,1));
+                                console.log("after splice :"+strArr);
+                                let noteHeading = document.createElement("h2");
+                                let noteData = document.createElement("p");
+                                noteHeading.textContent=strArr[i][1];
+                                noteData.textContent=strArr[i][2];
+                                console.log(strArr[i][1]);
+                                console.log(strArr[i][2]);
+
+                                demo.appendChild(noteHeading);
+                                demo.appendChild(noteData);
+                            }
+                    }
+                  
+                     
+              }
+
+              let addBtn= document.getElementById("addNote");
+              addBtn.addEventListener("click",()=>{
+                  //alert("fun");
+                  title =document.getElementById("noteTitle").value;
+                  content =document.getElementById("noteContent").value;
+                  unm=sessionStorage.getItem("activeUser");
+                  document.getElementById("user").innerHTML=unm;
+                  console.log(sessionStorage.getItem("activeUser"));
+                  console.log(title);
+                  console.log(content);
+                  addNote(unm,title,content);
+              });
+
+
+              function addNote(unm,title,content){
+
+                  let noteJsonArray=[];
+                  let notes=[];
+
+                  notes.push(unm);
+                  notes.push(title);
+                  notes.push(content);
+                  noteJsonArray.push(notes);
+
+
+
+                 let ob= localStorage.getItem("notes");
+                 console.log(ob!=null);
+                 if(ob!=null){
+                     alert(ob);
+                      let oldNoteJsonStringArray  = localStorage.getItem("notes");
+                      let oldNoteJsonArray = JSON.parse(oldNoteJsonStringArray);
+                      oldNoteJsonArray.push(notes);
+                      let oldNoteStringArray = JSON.stringify(oldNoteJsonArray);
+                      localStorage.setItem("notes",oldNoteStringArray);
+                      alert("note added");
+
+                 }else{
+                      let noteJsonStringArray =JSON.stringify(noteJsonArray);
+                      localStorage.setItem("notes",noteJsonStringArray);
+                      alert("note added");
+                 }
+              }
+    </script>
+  </body>
+</html>

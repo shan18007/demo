@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body{
+        background-color: rgb(4, 77, 99);
+      }
+      .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+      }
+      #clock {
+        justify-content: center;
+        align-items: center;
+        font-size: 90px;
+        color: rgb(121, 203, 228);
+        font-family: Verdana, sans-serif;
+        background-color: rgb(0, 87, 128);
+        text-align: center;
+      }
+      .day{
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+    </style>
+  </head>
+  <body onload="updateClock(); setInterval('updateClock()',1000)">
+    <div class="container" ><h3 id="day"></h3></div>
+    <div class="main">
+      <div id="clock"></div>
+     
+    </div>
+    <script>
+      function updateClock() {
+        let d = new Date();
+        let day = d.getDay();
+        let currentHour = d.getHours();
+        let currenMinute = d.getMinutes();
+        let currentSeconds = d.getSeconds();
+
+        let dayofTime = currentHour < 12 ? "AM" : "PM";
+        console.log(currentHour);
+
+        currentHour = currentHour > 12 ? currentHour - 12 : currentHour;
+        currentHour = (currentHour< 10 ? " 0" : "") +currentHour;
+
+        currentHour = currentHour == 0 ? 12 : currentHour;
+
+        currenMinute = (currenMinute < 10 ? "0" : "") + currenMinute;
+        currentSeconds =
+          currentSeconds < 10 ? "0" + currentSeconds : currentSeconds;
+
+        document.getElementById("clock").innerHTML =
+          currentHour +
+          ":" +
+          currenMinute +
+          ":" +
+          currentSeconds +
+          ":" +
+          dayofTime;
+          
+          document.getElementById("day").innerHTML =getDayString(day);;
+      }
+
+      function getDayString(day){
+        
+        switch(day){
+           case 0:  "Sunday";
+           break;
+
+           case 1:
+           return "Monday";
+           break;
+
+           case 2: return "Tuesday";
+           break;
+
+           case 3: return "Wedenesday";
+           break;
+
+           case 4: return "Thursday";
+           break;
+
+           case 5: return "Friday";
+           break;
+
+           case 6: return "Saturday";
+           break;
+           default:
+           break;
+         }
+
+      }
+    </script>
+  </body>
+</html>

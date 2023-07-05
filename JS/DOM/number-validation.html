@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Enter number between 1 to 10</h3>
+    <input type="text" name="num" id="numb">
+    <div id="msg"></div>
+    <input type="button" onclick="numValid()" value="Submit">
+
+    <script>
+        function numValid(){
+        let n=document.getElementById("numb").value;
+            let txt;
+            if(isNaN(n) || n >10 || n<1 ){
+                txt="Invalid Input";
+            }else{
+                txt="Input Ok";
+            }
+            document.getElementById("msg").innerHTML=txt;
+            alert(txt);
+        }
+    </script>
+</body>
+</html>

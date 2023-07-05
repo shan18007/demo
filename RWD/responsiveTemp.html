@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    .header {
+      height: 70px;
+      padding: 3px;
+      background-color: brown;
+      color: white;
+      text-align: center;
+    }
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    .menu li {
+      padding: 5px;
+      margin-bottom: 5px;
+      color: white;
+      background-color: teal;
+      box-shadow: 0 1px 3px rgba(rgb(0, 255, 234), e, 0.12);
+    }
+    .aside {
+        text-align: center;
+      background-color: royalblue;
+      color: white;
+      padding: 15px;
+      font-size: 14px;
+    }
+    [class*="col-"] {
+      float: left;
+      padding: 15px;
+    }
+    .btn {
+      clear: both;
+    }
+    .menu ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /*for mobile phone */
+    [class*="col-"] {
+      float: left;
+       width:100%;
+    }
+    
+    /*for tablet */
+    @media only screen and (min-width: 600px) {
+      .col-s-3 {
+        width: 9%;
+      }
+      .col-s-6 {
+        width: 40%;
+      }
+      .col-s-9 {
+        width: 60%;
+      }
+      .col-s-12 {
+        width: 80%;
+      }
+    }
+    @media only screen and (min-width: 768px) {
+      .col-3 {
+        width: 20%;
+      }
+      .col-6 {
+        width: 60%;
+      }
+      .col-9 {
+        width: 70%;
+      }
+      .col-12 {
+        width: 100%;
+      }
+    }
+  </style>
+  <body>
+    <div class="header">
+      <h1>Responsive Web Design</h1>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-3 menu">
+          <ul>
+            <li><a class="btn">Butoon1 </a></li>
+
+            <li><a class="btn">Butoon2 </a></li>
+
+            <li><a class="btn">Butoon3 </a></li>
+
+            <li><a class="btn">Butoon4 </a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-m-9">
+          <h2>THe City</h2>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque, iusto
+          aspernatur. Laboriosam praesentium labore reprehenderit voluptatum
+          deleniti voluptate voluptatibus a, quos, sapiente eaque error ea sunt
+          tenetur, minima quia omnis!
+        </div>
+
+        <div class="col-3 col-s-12">
+          <div class="aside">
+            <h2>What?</h2>
+            <p>Chania is a city on the island of Crete.</p>
+            <h2>Where?</h2>
+            <p>Crete is a Greek island in the Mediterranean Sea.</p>
+            <h2>How?</h2>
+            <p>You can reach Chania airport from all over Europe.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

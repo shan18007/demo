@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       const user= {
+            name: "martin", age: 30, phone: 3434343
+        }
+        const userNewVal={
+            address:"AD colB"
+        }
+        const newUser=Object.assign(user,userNewVal);
+        console.log(newUser)
+        
+        console.log(user)
+        // Object.freeze(user);
+        // user.age=33;
+        // user.dd=3;
+        // console.log(user.age);
+        // console.log(Object.isSealed(user));
+        
+    </script>
+</body>
+</html>
