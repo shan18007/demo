@@ -1,0 +1,27 @@
+package com.mvc.vld;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import jakarta.validation.Valid;
+
+@Controller
+public class HomeController {
+
+	@RequestMapping("/")
+	public String showHome(Model model) {
+		model.addAttribute("student",new Student());
+		return "student-form";
+	}
+	
+	@RequestMapping("process-form")
+	public String procesForm(@Valid @ModelAttribute("student") Student st,BindingResult bs,Model model) {
+		if(bs.hasErrors()) {
+			return "student-form";
+		}
+		return "student-from";
+	}
+}

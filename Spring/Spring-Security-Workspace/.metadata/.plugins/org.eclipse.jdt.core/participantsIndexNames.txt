@@ -1,0 +1,11 @@
+INDEX VERSION 1.131
+E:\Spring\Spring-Security-Workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3631515177.index
+\spring-security-demo-03-user-roles\src\main\java
+E:\Spring\Spring-Security-Workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1199752620.index
+\spring-security-demo-05-jdbc-bcrypt\src\main\java
+E:\Spring\Spring-Security-Workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3862151852.index
+\spring-security-demo-01-base-app\src\main\java
+E:\Spring\Spring-Security-Workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2804557636.index
+\spring-security-demo-04-jdbc-plaintext\src\main\java
+E:\Spring\Spring-Security-Workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1514348238.index
+\spring-security-demo-02-basic-security\src\main\java

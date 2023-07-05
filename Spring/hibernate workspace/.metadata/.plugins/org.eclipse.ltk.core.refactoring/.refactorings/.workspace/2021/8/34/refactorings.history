@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Mobile-one2many&apos;" deleteContents="true" description="Delete resource &apos;Mobile-one2many&apos;" element1="/Mobile-one2many" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1629454663679"/>
+</session>

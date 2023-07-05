@@ -1,0 +1,2 @@
+0:0:0:0:0:0:0:1 - - [12/Mar/2023:13:24:26 +0530] "GET /CRM-PROJECT-NEW/customer/list HTTP/1.1" 200 3312
+0:0:0:0:0:0:0:1 - - [12/Mar/2023:13:24:30 +0530] "GET /CRM-PROJECT-NEW/customer/list HTTP/1.1" 200 3312

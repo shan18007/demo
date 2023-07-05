@@ -1,0 +1,16 @@
+package com.spring;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.spring.aopdemo.DemoConfig;
+import com.spring.aopdemo.dao.AccountDAO;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		
+		AnnotationConfigApplicationContext context=new
+				AnnotationConfigApplicationContext(DemoConfig.class);
+		context.getBean(AccountDAO.class)
+	}
+}

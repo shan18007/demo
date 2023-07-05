@@ -1,0 +1,11 @@
+package com.spring.aopdemo.dao;
+
+import org.springframework.stereotype.Component;
+
+@Component("accountDao")
+public class AccountDAO {
+
+	public void addAcoount() {
+		System.out.println("Inside AccountDAO Class");
+	}
+}

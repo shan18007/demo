@@ -1,0 +1,10 @@
+0:0:0:0:0:0:0:1 - - [17/Sep/2021:00:01:37 +0530] "GET /CRM-PROJECT-NEW/customer/list HTTP/1.1" 200 4490
+0:0:0:0:0:0:0:1 - - [17/Sep/2021:00:01:42 +0530] "GET /CRM-PROJECT-NEW/customer/delete?customerId=107 HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [17/Sep/2021:00:01:42 +0530] "GET /CRM-PROJECT-NEW/customer/list HTTP/1.1" 200 4090
+0:0:0:0:0:0:0:1 - - [17/Sep/2021:00:02:01 +0530] "GET /CRM-PROJECT-NEW/customer/list HTTP/1.1" 200 4090
+0:0:0:0:0:0:0:1 - - [17/Sep/2021:00:02:03 +0530] "GET /CRM-PROJECT-NEW/customer/showFormForUpdate?customerId=101 HTTP/1.1" 200 1259
+0:0:0:0:0:0:0:1 - - [17/Sep/2021:00:02:05 +0530] "GET /CRM-PROJECT-NEW/customer/list HTTP/1.1" 200 4090
+0:0:0:0:0:0:0:1 - - [17/Sep/2021:00:02:07 +0530] "GET /CRM-PROJECT-NEW/customer/showFormForUpdate?customerId=100 HTTP/1.1" 200 1263
+0:0:0:0:0:0:0:1 - - [17/Sep/2021:00:02:09 +0530] "GET /CRM-PROJECT-NEW/customer/list HTTP/1.1" 200 4090
+0:0:0:0:0:0:0:1 - - [17/Sep/2021:00:02:11 +0530] "GET /CRM-PROJECT-NEW/customer/form HTTP/1.1" 200 1240
+0:0:0:0:0:0:0:1 - - [17/Sep/2021:00:02:15 +0530] "GET /CRM-PROJECT-NEW/customer/form HTTP/1.1" 200 1240

@@ -1,0 +1,8 @@
+package com.spring.aopdemo.dao;
+
+public class AccountDAO {
+
+	public void addAcoount() {
+		
+	}
+}

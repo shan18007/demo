@@ -1,0 +1,15 @@
+package com.practice;
+
+import javax.persistence.Entity;
+
+import lombok.Data;
+
+@Entity
+@Data
+public class Address  extends AbstractEntity{
+
+	private String street;
+	private String city;
+	private String state;
+	private int pin;
+}

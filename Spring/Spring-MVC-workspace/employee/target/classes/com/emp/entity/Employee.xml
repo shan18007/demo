@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Employee"> 
+
+<!--  parameter class is the input object -->
+<!--  here we passing the Employee class object -->
+
+   <insert id="insert" parameterClass="Employee">
+      insert into EMPLOYEE(first_name, last_name, salary)
+      values (#first_name#, #last_name#, #salary#)
+
+<!-- 	select key is used to get auto_generated value while inserting new record -->
+      <selectKey resultClass="int" keyProperty="id">
+         select last_insert_id() as id
+      </selectKey>
+   </insert> 
+
+</sqlMap>

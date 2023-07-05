@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Corona-API-NEW&apos;" deleteContents="true" description="Delete resource &apos;Corona-API-NEW&apos;" element1="/Corona-API-NEW" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1630255447008"/>
+</session>

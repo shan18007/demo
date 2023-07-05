@@ -1,0 +1,5 @@
+#Tomcat publish data
+#Sat Mar 11 19:38:00 IST 2023
+org.eclipse.jst.j2ee.server\:/binary\:C\:\\Users\\SHAN\\.m2\\repository\\org\\apache\\tomcat\\tomcat-jasper-el\\10.0.0\\tomcat-jasper-el-10.0.0.jar=WEB-INF/lib/tomcat-jasper-el-10.0.0.jar
+org.eclipse.jst.j2ee.server\:/binary\:C\:\\Users\\SHAN\\.m2\\repository\\org\\springframework\\spring-web\\5.3.5\\spring-web-5.3.5.jar=WEB-INF/lib/spring-web-5.3.5.jar
+org.eclipse.jst.j2ee.server\:/binary\:C\:\\Users\\SHAN\\.m2\\repository\\org\\apache\\tomcat\\tomcat-jasper\\10.0.0\\tomcat-jasper-10.0.0.jar=WEB-INF/lib/tomcat-jasper-10.0.0.jar
