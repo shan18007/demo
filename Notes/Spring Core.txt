@@ -1,0 +1,123 @@
+
+--------------------SPRING CORE----------------------------------
+IOC Container:
+Dependacny Injection: 
+
+Spring core and Spring context both version should be match
+
+bean is a simple java class which has getters and setters methods. 
+
+INJECTIONS
+
+Field Injection
+setter injection
+constructor injection
+
+Spring container will give ready made automatically object.
+Autowired can used only on non primitive data types.
+@Autowired
+
+@Qualifier ("address2")
+
+this is used to tell which bean should be injected.
+if there are mutilple beans of same class.
+address2 is the name property which is used while confuguring bean in xml file. 	
+-----------------------------------------------------------------------------------------
+
+JPA - Java Persistant API
+
+JPA is just a specification.
+ORM tools are Hibernate, Ibatis etc.
+if we are using hibernate and want to switch as Ibatis then it is not easy.
+Thats why JPA comes in.
+
+If you work with JPA you do need hibernate or ibatis for implementation.
+you cannot make JPA applicatiion without using these tools.
+if you are working with hibernate its just hibernate.
+but of you are working on JPA application either you are using Hibernate or ibatis.
+
+-----------------------------------------------------------------------------------------
+Differennce between CRUD Repository and JpaRepository :--
+
+CrudRepository :
+	It is a base interface and extends Repository Interface.
+	It contains methods for CRUD operations. For example save(), saveAll(), findById(), findAll(), etc. 
+	It doesn’t provide methods for implementing pagination and sorting	
+	It works as a marker interface.
+	To perform CRUD operations, define repository extending CrudRepository.
+	Syntax: 
+
+	public interface CrudRepository<T, ID> extends Repository<T, ID>
+	
+
+JpaRepository :
+	It extends PagingAndSortingRepository that extends CrudRepository.
+	It contains the full API of CrudRepository and PagingAndSortingRepository. For example, it contains flush(), saveAndFlush(), saveAllAndFlush(), deleteInBatch(), etc along with the methods that are available in CrudRepository.
+	It provides all the methods for which are useful for implementing pagination.
+	It extends both CrudRepository and PagingAndSortingRepository.
+	To perform CRUD as well as batch operations, define repository extends JpaRepository.
+
+	Syntax:
+
+	public interface JpaRepository<T,ID> extends PagingAndSortingRepository<T,ID>, QueryByExampleExecutor<T>
+	
+-----------------------------------------------------------------------------------------
+
+--------------------------SPRING MVC-----------------------------
+
+Annotations 
+
+@Component : It is used to mark the class as component so Spring container can create the object of that class automatically.
+			 when we use @Autowired .that time we will get this object automatically.
+@RequestMapping : used to handle type of request. ex GET, POST, Delete
+					by default it handle GET request.
+					@RequestMapping(value="/UpdateForm", method=RequestMethod.POST)
+@RequestParam : is used to fetch sigle parameter from the jsp page
+
+@PathVariable : Used to bind the URL variable into java variable
+
+@ModelAttribute : used to accept data from the form.
+				  ex. public String handleForm(@ModelAttribute User user,Model model){
+							sysout(user);
+						}
+
+---------------------Model , ModelAndView Methods-------------------------------------------
+Model : addAttribute(String key,Object object)
+
+ModelAndView : addObejct(String key,Object object)
+
+--------------------------Handling Exceptions----------------------------------------
+To handle centralize exception in Spring MVC
+Create new Controller class with @ControllerAdvice
+
+create method which return exception page.
+method must have @ExceptionHandler
+To send response status use @ResponseStatus(value=HttpStatus.INTERNAL_SERVER_ERROR)
+--------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

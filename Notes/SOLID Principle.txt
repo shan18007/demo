@@ -1,0 +1,82 @@
+
+SOLID Principle 
+
+Single Responsibility Principle
+
+Seperating functionality in different classes
+
+class Student --> addStudent()
+class PrintStudentDetails --> printDetails()
+class Percentage --> calculatePercentage()
+
+------------------------------------------------------------------
+
+Open-Closed Principle
+
+The open-closed principle states that according to new requirements the module should be open for extension but closed for modification. The extension allows us to implement new functionality to the module. Let's understand the principle through an example.
+
+Suppose, VehicleInfo is a class and it has the method vehicleNumber() that returns the vehicle number.
+
+VehicleInfo.java
+
+    public class VehicleInfo  
+    {  
+    public double vehicleNumber(Vehicle vcl)   
+    {  
+    if (vcl instanceof Car)   
+    {  
+    return vcl.getNumber();  
+    if (vcl instanceof Bike)   
+    {  
+    return vcl.getNumber();  
+    }  
+    }  
+
+If we want to add another subclass named Truck, simply, we add one more if statement that violates the open-closed principle. The only way to add the subclass and achieve the goal of principle by overriding the vehicleNumber() method, as we have shown below.
+
+VehicleInfo.java
+
+    public class VehicleInfo   
+    {  
+    public double vehicleNumber()   
+    {  
+    //functionality   
+    }  
+    }  
+    public class Car extends VehicleInfo   
+    {  
+    public double vehicleNumber()   
+    {  
+    return this.getValue();  
+    }  
+    public class Car extends Truck   
+    {  
+    public double vehicleNumber()   
+    {  
+    return this.getValue();  
+    }  
+
+Similarly, we can add more vehicles by making another subclass extending from the vehicle class. the approach would not affect the existing application.
+------------------------------------------------------------------
+
+Liskov Substitution Principle
+
+The Liskov Substitution Principle (LSP) was introduced by Barbara Liskov. It applies to inheritance in such a way that the derived classes must be completely substitutable for their base classes. In other words, if class A is a subtype of class B, then we should be able to replace B with A without interrupting the behavior of the program.
+
+
+------------------------------------------------------------------
+Interface Segregation Principle
+
+The principle states that the larger interfaces split into smaller ones. Because the implementation classes use only the methods that are required. We should not force the client to use the methods that they do not want to use.
+
+The goal of the interface segregation principle is similar to the single responsibility principle. Let's understand the principle through an example.
+------------------------------------------------------------------
+
+Dependency Inversion Principle
+
+The principle states that we must use abstraction (abstract classes and interfaces) instead of concrete implementations. High-level modules should not depend on the low-level module but both should depend on the abstraction. Because the abstraction does not depend on detail but the detail depends on abstraction. It decouples the software. Let's understand the principle through an example.
+
+    public class WindowsMachine  
+    {  
+    //functionality   
+    }  

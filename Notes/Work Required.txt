@@ -1,0 +1,420 @@
+
+department
+
+dept_id dept_name
+
+
+Employee
+ 
+emp_id emp_name dept_id emp_salary
+
+query) waq to show department name and count of employees working in each department
+ans -->  select d.dname, count(*) as No_OF_EMP from dept d, emp e where d.deptno=e.deptno group by d.dname,e.deptno  
+
+HASHMAP Implementation
+
+https://www.javamadesoeasy.com/2015/02/hashmap-custom-implementation.html
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Why string immutable in java.?
+abs: Immutable means unmodifiable / unchangeable
+	Security is the major reason why strings in java are made to immutable.
+	Strings in java is used to access data source like files,databases or even objects found across network.
+	even sometimes, strings store password and usernames. which cant be modified once created.
+	
+	how to prove
+	String s="I";
+	sysout(s.hascode())
+	s=s + "love java"
+	sysout(s.hascode())
+	
+In this example you will see both hascode will be different
+	 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+q) why we allowd default method in interface 
+ans: except defult method and static method from interface other methods we must have to implement in sub class or inherited class.
+     if there is already multiple classe which already implements the all abstact methods of interface and suppose now our requirement to add one more abstract
+	 method in interface and if we add this method in interface we must have to implement this newly added method to all implementing classes.
+	 consider if we have more thaN 100 classe then we have to manually implement this method in all those classes.
+		To avoid this kind of situations defalt method introduce in interface from java 1.8 version.
+	 now default method must have body in interface and we dont need to implement this method in all subclasse but we can implement default method in any 
+	 subclass based on our requirement.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+q) why static methods in interface
+ans:  static method can not be override and so static method prevents to implement in child class so implementation cannot be change.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+q) can we make class as immutable.?
+ans:  yes, we can make any class immutable 
+	To make any class immutable rules are,
+	1) class should be declare with final keyword
+	2) all fields /variables should be private and final
+	3) Only getters methods allowed. Setter methods not allowed
+	4) If there is field which refferences another class
+	 then getter method of that refference must return clone object or proxy object . (must be deep copy).
+	  ex. private final Address address;
+		public void getAddress(){
+			//creating deep copy object
+			Address ad=new Address();
+			ad.setAddressLine(this.address.getAddressLine());
+			ad.setCity(this.address.getCity());
+			return ad;
+		}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Static block:
+It is executed only once at the class loading operation.
+It is used to intialize static member values.
+ex. In some situation we have to populated default values.
+static{
+//default intialization code here
+}
+
+Non static block:
+	Non static block does not declare with any name it is like 
+	{
+		// non static block code
+	}
+	It is executed each time when the object of class is created.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------	
+done) clear memory area concepts. heap area, class area, static block concept why we use static block.
+
+Heap memory: In heap memoery object memory address is stored.
+Stack memory : In stack memoery  reference of memoery is stored.
+string constant pool : Inside heap area there is string constant pool area. to store string literals.
+when string object is created by new keyword jvm created string in heap area.
+also it check same string in scp area if this string is not present there it will create string in scp.
+
+ _______________________				 _______________________
+|						|				|						|
+|						|				|						|
+|	 Stack memoery		|-------------->|	 Heap memoery		|
+|						|				|						|
+|_______________________|				|_______________________|
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+done) equals method, try to override and hascode method also
+
+equals() : override this method when we want to change the comparision logic based on difference fields.
+		  To specify our own logic to compare the two objects we override equals() method of Objct class.
+
+	class Laptop{
+	private int id;
+	private String model;
+	private String color;
+	
+		@Override
+		public boolean equals(Object ob) {
+		//	if object is null or object is not same type of class retun false
+			if (ob == null || getClass() != ob.getClass())
+				return false;
+		//	if both object is pointing to same memoery location i.e same memory reference
+			if (this == ob)
+				return true;
+		// otherwise converting object into our class and comparing each properties of both object
+			Laptop e = (Laptop) ob;
+			return this.id == e.id && this.model == e.model && this.color == e.color;
+		}
+	}
+
+hascode() : 
+
+que-> can two objects have same hascode..?
+
+ans--> hashcode can be same for two objects but Both object cannot be equal.
+	
+	
+-------------------------------------------------------------------------------------------------------------------------------
+q)comparater and comparable difference 
+ans -> Comparable
+	Comparable is a interface.
+	If we want to sort the values based on specific field of class.
+	ex. we have class Laptop and we have attributes as ID,RAM,PRICE,NAME 
+	now we want to sort values based in PRICE so we have to implement the comparable interface in Laptop class.
+	and override the "public int compareTo(Object ob)" method of Comparable interface.
+	this method has only one parameter because since we have override compareTo() method in Laptop class.
+	we can call this method by Laptop class object and we are passing one object to this method. 
+	ex. Laptop l1=new Laptop(12,8,45000,HP);
+	    Laptop l2=new Laptop(16,4,32000,DELL);
+		l1.compareTo(l2);
+		
+	    In collections class we have sort method to sort the values.
+	but if we pass the List of Laptop class object to this method it will give error.
+	so we implement the sorting logic in laptop class by overriding compareTo() method.
+	as..
+		//sorting values based on price
+		public int compareTo(Laptop l2){
+			//if first value grater than second return +ve number
+			if(this.getPrice() > l2.getPrice()) 
+				return 1;
+			//if first value less than second return -ve number
+			if(this.getPrice() < l2.getPrice()) 
+				return -1;
+			//if both values are equal retun 0
+			if(this.getPrice() == l2.getPrice()) 
+				return 0;
+		}
+      
+		Now we can pass the List of Laptop class object to sort method of collections class
+		
+		List<Laptop> laps=new ArrayList<Laptop>();
+		list.add(new Laptop(12,8,45000,DELL));
+		list.add(new Laptop(10,4,30000,HP));
+		list.add(new Laptop(198,8,48000,ACCER));
+		Collections.sort(laps);
+
+Comparator Interface: 
+	by using comparable interface we can sort valuse based on only one values which we specified in class by compareTo() method
+	ex. we have specified comparing logic based on price. and if we want to sort values based on RAM the we have to change logic again.
+	and we must have to implements comaparable interface and override the compareTo() method.
+		
+	sometimes in java we might use third party java classes so we cannot change the source code so we cannot implement class by comparable interface.
+	For this situation we use Comparator
+
+	sort() method of Collection class also accept two parameters.
+	in first parameter we can pass the collections Object and in second parameter we have to pass our sorting logic which we will do by comparator interface.
+	Comparataor interface has compare method that will take two object in parameter.
+	ex. 
+	
+	// since Comparator is interface we can instatiate by anonymous class
+	Comparator<Laptop> com =new Comparator<Laptop>(){
+						public int compare(Laptop l1, Laptop l2){
+							if (l1.getPrice() > l2.getPrice())
+								return 1;
+							else
+								return -1;
+						}
+				    };
+	// first argument list of Laptop class objects and second parameter is refference of comparator interface
+	Collections.sort(laps, com);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------Generics in java
+
+	Why we require generics in java.?
+	
+	Java is a type safe laguage whatever the variables we use first we have to diclare the type of that vatiable.
+	generics is used in java to prevent the type safty.
+	type we have to mention in agnular brackets as <T> in angular bracket we can use any letter from A to Z.
+	for better understading we use T as type.
+	ex. Collection<Integer> c=new Collection<>();
+	now we can collection can have only integer values.
+	
+	we can create any class with generics
+	ex.
+	syntax-->
+	<? extends T>  -----> 	? is a subclass of T
+		here only those class will accept which is a subclass of T
+	<? super T>		----->  ? is a superclass if T
+		here only those class will accept which is a superclass of T (means T must be extends ?)
+	
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Write about Shallow cloning deep cloning and Cloneable Interface
+ans--> 
+	To clone the objects we must have to implement the Cloneable interface in that class which object we want to clone.
+	We have to override:- "protected Object clone()" method.
+		this method throws CloneNotSupportedException.
+	
+	By default shoallow cloning will work.
+	
+	Shallow Cloning: 
+		In shallow cloning change in clone object will reflect the changes in original object.
+		Shallow cloning is fast.
+		shallow cloning prefers when we want to work with premitive data.
+	Deep Cloning:
+		Change in cloned object does not reflect the changes in original object.
+		Deep cloning prefers when we are working with non primitive data (References of another class).
+		we have to implements cloneable interface and override clone method.
+		
+		consider we have Employee class and Address Class
+		ex.
+		class Employee implements Cloneable{
+			private int id;
+			private String name;
+			private Address address;
+			
+			@Override
+			protected Object clone(){
+				//cloning object and type casting to Employee class
+				Employee emp=(Employee) super.clone();
+				//cloning the Address class object and setting cloned object to Object reference of Address class.
+				emp.setAddress(Address) address.clone();
+				
+				//deep copy
+				//Address a=new Address();
+			    //a.setStreet(this.address.getStree());
+				//a.setCity(this.address.getCity());
+				//retun a;
+			}
+		}
+		
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Stream API
+
+when we use: 
+	Stream API is used when we have to work on bulk of data.
+	by using stream API code is reduce we can write code in very less lines.
+	It is usefull on any collction of data.
+	
+	Steps: Create Stream then configure stream then proceess stream
+	methods:
+		filter() : filter method is used to filter the stream of data based on some condition.
+				   it will return filtered data.
+				   ex. filter even elements 
+				   List<Integer> list = new ArrayList<Integer>();
+				   list.add(23);
+				   list.add(53);
+				   list.add(126);
+				   list.stream().filter(i->(i%2==0)).forEach(i->System.out.println(i));
+				   
+		map()	:	map method is use when we have perform some operation on each element of collection.
+					ex, sqare of each number
+					List<Integer> newList = list.stream().map(i -> (i * i)).collect(Collectors.toList());
+		sorted():
+		sorted(comparator):  
+		min(comparator):
+		max(comparator):
+		count():
+		collect(): 
+		of():
+
+		forEah(): This method is used to process operation on each element of collction.
+				 This method does not retun anything.
+		toArray(): This method is used to convert stream of collection into Array.
+					It returns Object [].
+					
+Parallel Stream :   Java parallel streams come into picture after java 1.8
+					Its meant to utilize multiple cores of processor.
+					Till now our java code has 1 stream of processing where it executes sequentially.
+					but when you use parallel streams, we devide code into multiple streams that executes parallely,
+					on sperate cores and final result is the outcome of individual cores outcomes combined.
+-------------------------------------------------------------------------------------------------------------------------------					
+
+QUESTIONS TO SEARCH
+
+que-> can two objects have same hascode..?
+
+
+	Why we require generics in java.?
+
+
+	if a parent class method (using throws keyword in method signature) which can throws exception and we are calling this method in subclass through inheritance
+	do we really need to use try catch
+	
+	-----------------------------------------------23-11-2022-------------------------------------
+	
+	Java Enums -- Completed (similar with class) 
+		Enum can define inside or outside of the class.
+		Used to create own data type.
+		like other classes enum can have constructors, variables, methods.
+		enum can implement interface. but cannot extend class.
+		enum can not be inherited (cant make enum as superclass).
+		
+	
+	Java Dates, calendar, date time, conversion date time, comparision dates
+	
+	pkg = java.util.calendar
+	Calendar is a abstract class
+	methods 
+		Calendar c= Calendar.getInstance();
+		System.out.println(c.getCalendarType());
+		System.out.println(c.get(Calendar.DATE));
+		System.out.println(c.get(Calendar.HOUR));
+		System.out.println(c.get(Calendar.MINUTE));
+		System.out.println(c.get(Calendar.SECOND));
+		
+	Time API
+	pkg = java.time.LocalDate;
+	
+		LocalDate l= LocalDate.now();
+		LocalTime t= LocalTime.now();
+		LocalDateTime dt= LocalDateTime.now();
+	
+day 1)	
+	Hibernate 
+		-mappings
+		-session and session factory
+		-crud operations (all methods) also try to handle exceptions
+		-HQL queries
+		-object states
+		-caching
+		-project (retrive db obejct save in pojo class)
+		
+	Difference between JPA repo AND CRUD repo and its methods
+	spring
+		-IOC, Dependancy Injection
+		-core
+		-beans
+		-scope
+		-Crud operation 
+		-handle exceptions
+		-create project
+	Spring annotations (ex like transactional)
+
+day 2)
+	Spring JDBC
+		finder methods (findOne, findALL)
+	Spring MVC
+	REST API
+		create APIs (GET, PUT, POST, DELETE)
+		perform crud operation
+		handle exceptions
+		How custom json object return by api try to implement
+		
+day 3)
+
+	Spring AOP
+	UNIT testing (JUNIT test cases)
+	
+	
+watch videos
+	clear CI CD tools concepts like docker, jenkins,
+	what is MQ, Rabbit MQ, Mockito, swagger
+
+day 4)	
+	DB----------
+	basic queries DDL DML DCL
+	PL/SQL 
+		-stored procedures
+		-triggers
+		-merge into
+		-NVL, NVL2
+		-case
+		-when exist update
+		-not exist insert
+		-inbuilt functions advance
+		
+		
+	
+	
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

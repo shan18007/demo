@@ -1,0 +1,11 @@
+
+@EnabledWebSecurity
+extends WebSecurityConfigurerAdapter()
+has configure(AuthenticationManagerBuilder auth)
+
+auth.isMemoryAuthentication();
+
+
+
+---------------------------------------
+Spring security by L2code

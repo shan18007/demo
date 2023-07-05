@@ -1,0 +1,117 @@
+
+learn EnitityManagerFactory and EntityManager where is used and how is used.
+which type of project we can create
+
+
+JPA Methods
+
+
+CRUD Respoitory is a base Interface
+
+JPA Repository is a child interface which extends CRUD Repository
+
+CRUD repository has a alll CRUD operations.
+JPA Repository has CRUD methods as welll as some advance methods which help for paging sorting.
+
+------------------------------------------------------------------------------------------
+--------------------------CRUD Repository Mehtods
+
+save() --> to save single object. Throws illegalArgumentException in case enitity is null.
+saveAll() --> to save multiple objects at time. ALL object must not be null .
+				Throws illegalArgumentException if any one of entities is null.
+
+findById(id) --> return optional if object not found. Throws illegalArgumentException if id is null.
+findALL() --> Reutrn all objects.
+findAllById(id) --> 
+
+delete(object) --> delete single object. Throws illegalArgumentException if object is null.
+deleteAll() --> delete ALl objects. Throws illegalArgumentException if any one of object is null.
+deleteAll(iterable/list) --> delete list of object passed to methods.Throws illegalArgumentException if any one of object is null.
+deleteById(int id) --> delete object by Id. Throws illegalArgumentException if id is null.
+
+------------------------------------------------------------------------------------------
+
+Creting Custom Finder Mehtods / Derived Qeury Methods
+
+consider if we want data based on out requirement.
+such as data by name, by name and password, by naem starting with prefix, by name like keyword
+ex. 
+findByNameStartingWith(String prefix)
+findByNameEndingWith(String suffix)
+findByNameContaining(String words)
+findByNameLike(String likePattern)
+findByAgeLessThan(int age)
+findByAgeIn(Collection<Integer> ages)
+findByNameOrderByName(String name)
+------------------------------------------------------------------------------------------
+Writing own Queries in Spring Data JPA 
+
+@Query : is used to write own Query
+@Param : is used to bind formal variable to query parameter
+Two types of query can write
+	we can write JPQL(JAVA persistant Query) queries similar to HQL 
+	Native Query
+	//JPQL Query
+	@Query("select u from User u where u.name= :n")
+	public List<User> getUserByName(@Param("n") String name);
+	
+    //native Query
+	@Query(value="select * from user",nativeQuery = true)
+	public List<User> getUsers();
+
+------------------------------------------------------------------------------------------ 
+
+Sring boot Dev Tools -- Add dependacny in POM.xml
+Automatically restart application when we made any changes
+improve the development time.
+
+Jackson dependancy :-> It is used to convert java object into JSON it works automatically in spring boot.
+
+
+---------------------------------------------------------------------------------
+
+REST-API
+
+@RestController :-> To create controller
+@GetMapping
+@PostMapping
+@PutMapping
+@DeleteMapping
+
+@pathVariable
+@ModelAttribute
+@Component
+@service
+@Repository
+@Autowired
+@RequestBody
+@ResponseBody
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

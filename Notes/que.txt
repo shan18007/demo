@@ -1,0 +1,153 @@
+Chatter!
+
+
+Design a chat system where a user can send a chat message to another user.
+
+A user can have following properties:
+Username (assume username as unique)
+Status
+
+A user can be in one of the following status:
+ONLINE
+OFFLINE
+(by default the created user will be ONLINE.)
+
+A message will have following properties:
+MessageId (assume MessageId as unique)
+Text
+SenderUser
+RecieverUser
+MessageStatus
+
+MessageStatus can be one of the following:
+SENT
+DELIVERED
+READ
+(by default the message is in SENT status.)
+
+Your designed solution should have following features:
+Create a user.
+Update status of user to ONLINE, OFFLINE.
+A user can send a message to another user.
+Users can only send a message when they are ONLINE.
+If Sender is offline, print “sender offline” as a message.
+Receiver can be either ONLINE or OFFLINE.
+Update status of message.
+Display all the messages sent by a user to another user.
+
+Bonus (only attempt if time permits):
+Make sure allowed state change follows below state transitions, while updating MessageStatus:
+SENT → DELIVERED,  DELIVERED → READ
+
+The examples below are just to understand the functionalities and may not necessarily be used in the same format as input to your driver program. 
+
+Sample Test Cases:
+
+Create User:
+
+Method definition: createUser(username)
+Tests:
+createUser(“Alex”)
+createUser(“Bob”)
+createUser(“Lexi”)
+
+
+Update User Status:
+
+	Method definition: updateUserStatus(username, status)
+	Tests:
+updateUserStatus(“Bob”, “OFFLINE”)
+
+Send Message:
+
+	Method Definition: sendMessage(messageId, text, sender, receiver)
+	Tests:
+
+sendMessage(1, “need help.”, “Alex”, “Lexi”)
+sendMessage(2, “Hello”, “Lexi”, “Alex”)
+sendMessage(3, “nice!”, “Bob”, “Lexi”)     // print “sender offline” as Bob is offline.
+
+Update Message Status:
+
+	Method Definition: updateMessageStatus(messageId, messageStatus)
+	Tests:
+updateMessageStatus(2, “DELIVERED”)
+updateMessageStatus(2, “READ”)
+updateMessageStatus(1, “DELIVERED”)
+
+Display all messages from sender to receiver:
+	Method Definition: displayMessages(sender, receiver)
+	Tests:
+displayMessages(“Alex”, “Lexi”) //show all messages and their attributes as list
+(ordering on display is not required.)
+Sample OP: [(messageId, text, senderUsername, receiverUsername, messageStatus), (,,,), (...), …]
+
+Guidelines:
+You are free to use the language of your choice.
+Feel free to store all interim/output data in-memory. Use of any external persistent datastore is not required.
+Restrict internet usage to looking up syntax or API references
+Save your code/project by your name and email it to the email address provided by the interviewer. Your program will be executed on another machine. So, explicitly specify any dependencies in your email.
+Expectations:
+Make sure that you have working and demonstrable code for all the above requirements.
+Feature requirements should be strictly followed. Work on the required functionalities first and then work on bonus requirements.
+Use of proper abstraction, modularity and separation of concerns is required.
+Code should easily accommodate new requirements with minimal changes.
+Proper exception handling and logging is required.
+Writing test cases is encouraged.
+Code should be modular, readable and unit-testable.
+Important Notes: 
+Avoid writing monolithic code.
+Do not use any database store, use in-memory data structure. 
+Do not create any UI for the application.
+Do not create rest apis, use simple driver class to trigger functionalities.
+Executing test cases or simple Main function should be sufficient
+
+
+
+package com.pro;
+
+import java.util.Scanner;
+
+public class ArrayDigits {
+
+
+
+	public static void main(String[] args) {
+
+		Scanner sn = new Scanner(System.in);
+		System.out.println("Enter number ");
+		int n = sn.nextInt();
+		int[] ar = new int[n];
+		for (int i = 0; i < n; i++) {
+			ar[i] = sn.nextInt();
+		}
+
+		boolean same=true;
+		for (int i = 0; i < ar.length; i++) {
+			if (ar[i] == 9) {
+				continue;
+			}else {
+				same=false;
+				break;
+			}
+		}
+		System.out.println(same);
+
+		
+		for (int j = ar.length-1; j > 0; j--) {
+			if (ar[j] == 9) {
+				ar[j] = 0;
+				continue;
+			}else {
+				ar[j]++;
+				break;
+			}
+		}
+
+		// printing array
+		for (int j = 0; j < ar.length; j++) {
+			System.out.print(ar[j]);
+		}
+
+	}
+}

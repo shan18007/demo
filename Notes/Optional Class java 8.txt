@@ -1,0 +1,51 @@
+JAVA 8 Important Features
+
+1) lamda expression
+2) Optional class
+3) Stream API
+4) Default and static method in interface
+5) forEach method in Iterable interface
+
+Functional Interface : 
+	1) Consumer :  void accept(T t)
+    2) Supplier :  <T> get()
+	3) Predicate : boolean test()
+	4) Runnable : run()
+	5) Comparable : int compateTO()    // ex. int compateTO(Laptop l2)
+	
+	   packageName : java.util.function
+
+Optional Class: Package java.util
+
+ used to avoid null pointer exception.
+ It can help in writing a neat code without using too many null checks.
+ By using Optional, we can specify alternate values to return or alternate code to run. 
+ Optional is a container object which may or may not contain a non-null value. You must import java.util package to use this class.
+ If a value is present, isPresent() will return true and get() will return the value. 
+ Additional methods that depend on the presence or absence of a contained value are provided, such as orElse() which returns a default value if the value is not present, and ifPresent() which executes a block of code if the value is present. This is a value-based class, i.e their instances are : 
+
+    Final and immutable (though may contain references to mutable objects).
+    Considered equal solely based on equals(), not based on reference equality(==).
+    Do not have accessible constructors.
+
+Satic methods of Optional class
+	empty() --> returns an empty optional instance
+	of(T value) --> returns an Optional with the specified present non-null value
+	ofNullable(T value) --> returns an Optional describing the specified value,
+							if non-null otherwise, returns an empty optional.
+						
+						
+orElse(T other)
+Return the value if present, otherwise return other
+
+orElseGet(supplier s) : used when we are getting value from external method
+
+
+
+ 	empty()
+Returns an empty Optional instance.
+
+Consumer Interface :
+
+							
+							

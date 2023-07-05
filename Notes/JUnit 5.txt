@@ -1,0 +1,55 @@
+  
+ -------------------
+	JUnit 5 
+ -------------------
+ JUnit-API :- Engine to run 
+ Junit-jupiter :- to write test cases
+ Vintage :- To support or run Junit 4 test cases
+  
+ -------------------
+	Methods
+ -------------------
+ assertEquals(expected, actual, "Optional message displayed when test case fails");
+ 
+ assertThrow(Exception.class, actual , "Optional msg");
+ 
+ assertAll(
+			assertEquals(expected, actual, "Optional message displayed when test case fails"),
+			assertEquals(expected, actual, "Optional message displayed when test case fails"),
+			assertEquals(expected, actual, "Optional message displayed when test case fails");
+			);
+			
+			it is use to run the bunch of test case at a time.
+ 
+ -------------------
+   Junit Lifecycle
+ -------------------
+ 
+ Lifecycle Hooks
+ 
+ @BeforeAll
+ @AfterAll
+ @BeforeEach
+ @AfterEach
+ 
+ some other annotations
+ 
+ @Nested
+ @RepeatedTest(4) :-> no of time to iterate
+ @Displayname
+ @Disabled
+ @Tag("tag name") :-> it can be run from run configuration by include and exclude tag option
+ To run the test cases selectively @Tag is used
+ 
+ 
+ 
+ Testinfo ->  Contains information about test
+ 
+ TestReporter -> let's you access the log or console, where Junit reports the Error.
+ 
+ 
+ 
+ 
+ 
+
+

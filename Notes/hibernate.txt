@@ -1,0 +1,165 @@
+
+ORM = Object Relational Mapping
+Hibernate is a ORM tool.
+we can store the java class object in relational database and also fetch the data and mapp into class directly.
+
+SessionFactory factory= Configuration.configure("hibernate.cfg.xml")
+						.configure().buildSessionFactory();
+						
+Session session = factory.getCurrentSession();
+
+
+fetching Types 
+	get and load are the methods of Session
+   -get()
+	get methods take two paramaters one for type and second is Id which is primary in table.
+	ex. session.get(Student.class, 202);
+	get returns null if the object is not found in cache as well as in db.
+	Use if you are not sure if data exist in db.
+	get method first search the object in session. if object found it will take from session and does not hit db.
+	but if object is not found in session it hits the db.
+	//reduce db calls
+	
+   -load()	(Lazy initialization)
+    load returns objectNotFound Exception when object is not found in cache as well as in db. but never returns null.
+	Use when you are sure data exist in db.
+	load() retutns the proxy object.
+	laod hit the database only when we call the methods of that object.
+	it improve the performance.
+	ex. consider Student class which has getters methods. getId() getName()
+	//fetching student which has 424 id
+	//here load returns proxy object
+	Student s=(Student) load(Student.class, 424);
+	
+	// now it will hit the database
+	s.getName();
+	
+	
+	Lazy Loading and Eager Loading
+	
+	Lazy : In Lazy loading accossiacted data loads only when we expilcitly called getter method.
+			ex. Question class has Answer field which refers the another class.
+				so when we call the getters methods of Answer class only that time data is select from Answer table.
+	
+	Eager: It is a design pattern in which data loading occurs on the spot.
+	
+	by default lazy laoding.
+	Syntax ---->    @one to many(mappedBy="question", fetch = FetchType.Eager)
+	
+--------------------------------------------------------------------------------------------------
+
+	Hibernate Object State
+	
+	Transient : When we create new object and set the properties to that object.
+				Object is created and it has properties.
+				(NOT IN DB AND NOT CONNECTED WITH Session)
+	
+	Persistant : It goes in persistant state When session.save() method called.
+				 object is now accossiacted with db and session.
+	
+	Detached : It is in Detached state When we closed the session. --> session.close()
+			   Not accossiacted with session and db.
+	
+	Removed : when we call session.delete() method 
+				object is not accossiacted with db.
+				but accossiacted with session.
+--------------------------------------------------------------------------------------------------
+				
+HQL query
+
+	Session s= factory.getCurrentSession();
+	Query q = s.creatQuery("from Student where city:= c");
+	q.setParameter("c","MUMBAI");
+	
+	List<Student> list = q.list();
+	
+	//for delete or update 
+	//q.executeUpdate();
+	
+--------------------------------------------------------------------------------------------------
+SQL native Queries
+	
+NativeQuery nq = createSQLQuery("select * from student");
+	//it return object array because our data in tables not in Class Objects
+	List<Object[]>  list = nq.list();	
+	
+	for(Object[] student: list){
+	//consider name and city column	
+	System.out.println(student[1] + " : "+student[2]);
+	}
+	//output
+	shantanu amravati
+--------------------------------------------------------------------------------------------------
+
+Cascade 
+cascades ---> Detached, Merged, Persist, Refresh, Remove
+ @OneToMany (cascade = CascadType.ALL)
+ List<Answer> answer;
+ 
+--------------------------------------------------------------------------------------------------
+ 
+CACHING IN HIBERNATE
+
+ Cahing is the mechanism to enhacnce the performance of the application.
+ cahing is used to reduce the number of database queries.
+ 
+ First Level Caching 
+	- by default enabled
+	- accossiacted with session
+	- seesion.contains(object) method is used to check if object is available in session.
+	
+ Second Level Caching 
+	- we have to enable manually
+	- accossiacted with sessionFactory.
+	
+	Ehcache is the dependancy to enable second leve cache.
+	Annotation is used to enable second level Cache
+	@Cacheable
+	@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+	
+	same object is accessible in multiple sessions. without hiting db.
+	ex.
+	
+	Session session= factory.openSeesion();
+	Student s1= session.get(Student.class, 242);
+	sysout(s1);
+	session.close();
+
+	// now will try to fetch same object with id 242
+	//this time select query will not fire
+	Session session= factory.openSeesion();
+	Student s2= session.get(Student.class, 242);
+	sysout(s2);
+	session.close();
+	
+--------------------------------------------------------------------------------------------------
+
+
+What is ServletContext
+-> It is used to share commnon info to all servlets in web application.
+
+HibernateTemplate methods	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	

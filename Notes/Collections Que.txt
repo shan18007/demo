@@ -1,0 +1,32 @@
+Question: When to use LinkedList or ArrayList?
+
+Answer:
+
+Accessing elements are faster with ArrayList, because it is index based.
+But accessing is difficult with LinkedList. It is slow access. This is
+to access any element, you need to navigate through the elements one by
+one. But insertion and deletion is much faster with LinkedList, because
+if you know the node, just change the pointers before or after nodes.
+Insertion and deletion is slow with ArrayList, this is because, during
+these operations ArrayList need to adjust the indexes according to
+deletion or insetion if you are performing on middle indexes. Means,
+an ArrayList having 10 elements, if you are inserting at index 5, then
+you need to shift the indexes above 5 to one more.
+
+
+map methods
+
+putIfAbsent(key,value) : this method insert key and value if the key is not exist in map 
+						 it insert key value pair and return null.
+						 If key is exist it returns key.
+						 returns-->String value 
+						 
+Question: What is wrapper class in java?
+
+Answer:
+
+Everything in java is an object, except primitives. Primitives are
+int, short, long, boolean, etc. Since they are not objects, they cannot
+return as objects, and collection of objects. To support this, java provides
+wrapper classes to move primitives to objects. Some of the wrapper classes
+are Integer, Long, Boolean, etc.

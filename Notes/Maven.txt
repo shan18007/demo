@@ -1,0 +1,19 @@
+
+
+Docker is a software platform that allows you to build, test, and deploy applications quickly.
+by using docker file we can create docker image.
+
+
+Pods is a smallest deployeble unit.It can have multiple containers.
+
+Kubernets is a container orchestrization tool. To manage the container
+
+Kubernets Control plane = master node
+
+Kubernets automatically scale up / manage containers based on requirement.
+
+Nodes = servers
+
+master node 		Worker node 1 	  Worker node 2 	   Worker node 3
+	|						|				|					|
+etcd					
